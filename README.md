@@ -1,70 +1,70 @@
-# slowloris.py - Simple slowloris in Python
+# slowloris.py - Slowloris simple en Python
 
-## What is Slowloris?
-Slowloris is basically an HTTP Denial of Service attack that affects threaded servers. It works like this:
+## ¿Qué es Slowloris?
+Slowloris es básicamente un ataque de denegación de servicio HTTP que afecta a los servidores subprocesos. Funciona así:
 
-1. We start making lots of HTTP requests.
-2. We send headers periodically (every ~15 seconds) to keep the connections open.
-3. We never close the connection unless the server does so. If the server closes a connection, we create a new one keep doing the same thing.
+1. Comenzamos a hacer muchas solicitudes HTTP.
+2. Enviamos encabezados periódicamente (cada ~15 segundos) para mantener abiertas las conexiones.
+3. Nunca cerramos la conexión a menos que el servidor lo haga. Si el servidor cierra una conexión, creamos una nueva y seguimos haciendo lo mismo.
 
-This exhausts the servers thread pool and the server can't reply to other people.
+Esto agota el grupo de subprocesos de los servidores y el servidor no puede responder a otras personas.
 
-## Citation
+## Citación
 
-If you found this work useful, please cite it as
+Si encuentra útil este trabajo, por favor cítelo como
 
 ```bibtex
-@article{gkbrkslowloris,
+@article{luis498slowloris,
   title = "Slowloris",
   author = "Gokberk Yaltirakli",
   journal = "github.com",
   year = "2015",
-  url = "https://github.com/gkbrk/slowloris"
+  url = "https://github.com/luis498/slowloris"
 }
 ```
 
-## How to install and run?
+## ¿Cómo instalar y ejecutar?
 
-You can clone the git repo or install using **pip**. Here's how you run it.
+Puede clonar el repositorio de git o instalarlo usando **pip**. Así es como lo ejecutas.
 
 * `sudo pip3 install slowloris`
 * `slowloris example.com`
 
-That's all it takes to install and run slowloris.py.
+Eso es todo lo que se necesita para instalar y ejecutar slowloris.py.
 
-If you want to clone using git instead of pip, here's how you do it.
+Si desea clonar usando git en lugar de pip, así es como lo hace.
 
-* `git clone https://github.com/gkbrk/slowloris.git`
+* `git clone https://github.com/luis498/slowloris.git`
 * `cd slowloris`
 * `python3 slowloris.py example.com`
 
-### SOCKS5 proxy support
+### Compatibilidad con proxy SOCKS5
 
-However, if you plan on using the `-x` option in order to use a SOCKS5 proxy for connecting instead of a direct connection over your IP address, you will need to install the `PySocks` library (or any other implementation of the `socks` library) as well. [`PySocks`](https://github.com/Anorov/PySocks) is a fork from [`SocksiPy`](http://socksipy.sourceforge.net/) by GitHub user @Anorov and can easily be installed by adding `PySocks` to the `pip` command above or running it again like so:
+Sin embargo, si planeas usar el `-x` opción para usar un proxy SOCKS5 para conectarse en lugar de una conexión directa a través de su dirección IP, deberá instalar el `PySocks` librería (o cualquier otra implementación de la `socks` biblioteca) también. [`PySocks`](https://github.com/Anorov/PySocks) es un tenedor de [`SocksiPy`](http://socksipy.sourceforge.net/) por el usuario de GitHub @Anorov y se puede instalar fácilmente agregando `PySocks` al `pip` comando anterior o ejecutarlo de nuevo así:
 
 * `sudo pip3 install PySocks`
 
-You can then use the `-x` option to activate SOCKS5 support and the `--proxy-host` and `--proxy-port` option to specify the SOCKS5 proxy host and its port, if they are different from the standard `127.0.0.1:8080`.
+YA continuación, puede utilizar la opción `-x` para activar la compatibilidad con SOCKS5 y las opciones `--proxy-host` y `--proxy-port` para especificar el servidor proxy SOCKS5 y su puerto, si son diferentes del estándar ` 127.0.0.1:8080`.
 
-## Configuration options
-It is possible to modify the behaviour of slowloris with command-line
-arguments. In order to get an up-to-date help document, just run
+## Opciones de configuración
+Es posible modificar el comportamiento de slowloris con línea de comandos
+argumentos Para obtener un documento de ayuda actualizado, simplemente ejecute
 `slowloris -h`.
 
 * -p, --port
-* * Port of webserver, usually 80
+* * Puerto del servidor web, generalmente 80
 * -s, --sockets
-* * Number of sockets to use in the test
+* * Número de enchufes a utilizar en la prueba
 * -v, --verbose
-* * Increases logging (output on terminal)
+* * Aumenta el registro (salida en el terminal)
 * -ua, --randuseragents
-* * Randomizes user-agents with each request
+* * Aleatoriza a los agentes de usuario con cada solicitud
 * -x, --useproxy
-* * Use a SOCKS5 proxy for connecting
+* * Use un proxy SOCKS5 para conectarse
 * --https
-* * Use HTTPS for the requests
+* * Use HTTPS para las solicitudes
 * --sleeptime
-* * Time to sleep between each header sent
+* * Tiempo para dormir entre cada encabezado enviado
 
-## License
-The code is licensed under the MIT License.
+## Licencia
+El código está autorizado bajo la Licencia MIT.

@@ -16,7 +16,7 @@ Si encuentra útil este trabajo, por favor cítelo como
 ```bibtex
 @article{luis498slowloris,
   title = "Slowloris",
-  author = "Gokberk Yaltirakli",
+  author = "Truchorko@luis498",
   journal = "github.com",
   year = "2015",
   url = "https://github.com/luis498/slowloris"
